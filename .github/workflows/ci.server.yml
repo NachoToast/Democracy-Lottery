@@ -49,9 +49,3 @@ jobs:
 
             - name: Lint
               run: pnpm lint
-
-            - name: Upload Build Artifact
-              uses: actions/upload-artifact@v4
-              with:
-                  name: server build (node ${{ matrix.node-version }})
-                  path: server/dist
