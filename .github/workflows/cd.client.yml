@@ -1,0 +1,54 @@
+name: Client CD
+
+on:
+    workflow_run:
+        workflows: ['Client CI']
+        types: [completed]
+        branches: [main]
+
+concurrency:
+    group: client-deploy
+    cancel-in-progress: true
+
+jobs:
+    deploy:
+        name: Deploy to GitHub Pages
+        if: github.event.workflow_run.conclusion == 'success'
+        runs-on: ubuntu-latest
+        timeout-minutes: 2
+
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 9
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+                  cache: 'pnpm'
+
+            - name: Install Dependencies
+              run: pnpm install
+
+            - name: Build
+              run: pnpm build
+
+            - name: Setup Pages
+              uses: actions/configure-pages@v4
+
+            - name: Uploaded Artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: client/dist
+
+            - name: Deploy
+              uses: actions/deploy-pages@v4
