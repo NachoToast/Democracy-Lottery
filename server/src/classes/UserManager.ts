@@ -206,6 +206,10 @@ export class UserManager {
         }
 
         for (const user of this.usersByName.values()) {
+            if (user.isAdmin) {
+                continue;
+            }
+
             user.socket.emit(
                 ServerEvents.User.Info,
                 users.length,
