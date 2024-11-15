@@ -23,7 +23,7 @@ jobs:
                   password: ${{ secrets.PASSWORD }}
                   port: ${{ secrets.PORT }}
                   script: |
-                      cd services_v2/democracy-lottery
+                      cd services_v2/Democracy-Lottery
                       git reset --hard --quiet
                       git clean -d --force --quiet
                       git pull --quiet

@@ -12,6 +12,10 @@ on:
             - '.github/workflows/*.client.yml'
             - '**/*.md'
 
+defaults:
+    run:
+        working-directory: server
+
 jobs:
     build:
         name: Node
