@@ -1,0 +1,36 @@
+{
+    "name": "democracy-lottery-server",
+    "private": true,
+    "license": "MIT",
+    "main": "dist/main.js",
+    "type": "module",
+    "author": {
+        "name": "NachoToast",
+        "url": "https://github.com/NachoToast"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NachoToast/DemocracyLottery",
+        "directory": "server"
+    },
+    "scripts": {
+        "build": "tsc",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint src --max-warnings=0",
+        "check-all": "pnpm run typecheck && pnpm run lint",
+        "start": "node .",
+        "dev": "node --import tsx --env-file=.env --watch-path=src --disable-warning=ExperimentalWarning src/main.ts"
+    },
+    "dependencies": {
+        "mongodb": "^6.9.0",
+        "socket.io": "^4.8.0"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.12.0",
+        "@types/node": "^22.7.4",
+        "eslint": "^9.12.0",
+        "tsx": "^4.19.1",
+        "typescript": "^5.5.4",
+        "typescript-eslint": "^8.8.0"
+    }
+}

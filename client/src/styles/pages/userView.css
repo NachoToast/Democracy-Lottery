@@ -1,0 +1,13 @@
+#user-view #welcome-display {
+    color: var(--theme-yellow);
+}
+
+#user-view #user-count-display,
+#user-view #user-chance-display {
+    color: var(--theme-yellow);
+    font-weight: bold;
+}
+
+#user-view p:last-of-type {
+    color: var(--theme-grey);
+}

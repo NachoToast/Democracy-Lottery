@@ -1,0 +1,74 @@
+.emote-row {
+    display: flex;
+    position: relative;
+}
+
+.emote-row button {
+    width: 40px;
+    height: 40px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 32px;
+
+    transition: all 100ms linear;
+}
+
+.emote-row button:hover {
+    transform: scale(115%);
+}
+
+.emote-row.disabled {
+    cursor: not-allowed;
+}
+
+.emote-row.disabled button {
+    pointer-events: none;
+    filter: grayscale(100%);
+}
+
+.emote-row button.skull {
+    background-image: url('/assets/emojis/skull.svg');
+}
+
+.emote-row button.sunglasses {
+    background-image: url('/assets/emojis/sunglasses.svg');
+}
+
+.emote-row button.sob {
+    background-image: url('/assets/emojis/sob.svg');
+}
+
+.emote-row button.flushed {
+    background-image: url('/assets/emojis/flushed.svg');
+}
+
+.emote-row button.nerd {
+    background-image: url('/assets/emojis/nerd.svg');
+}
+
+.emote-row span {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+
+    height: 5px;
+    width: 0%;
+
+    background-color: var(--theme-blue);
+    visibility: hidden;
+}
+
+.emote-row.disabled span {
+    visibility: visible;
+    animation: expand 1s linear forwards;
+}
+
+@keyframes expand {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}

@@ -1,0 +1,90 @@
+#login-view {
+    width: 100%;
+    height: 100%;
+
+    background-image: url('/assets/helldiver.png');
+    background-repeat: no-repeat;
+    background-size: 30vh;
+
+    background-position: bottom right;
+}
+
+#login-view form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+}
+
+#login-view div {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}
+
+#login-view button {
+    width: 50%;
+
+    margin-top: 1em;
+}
+
+#login-view p {
+    position: absolute;
+    bottom: 0;
+
+    transform: translateY(calc(100% + 1em));
+
+    text-align: center;
+
+    width: max-content;
+
+    animation: fade-in 200ms ease;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#login-view p.error {
+    color: lightcoral;
+}
+
+#login-view p.info {
+    color: var(--theme-blue);
+}
+
+#username-section {
+    margin-bottom: 1em;
+}
+
+#password-section {
+    height: 0;
+    width: 100%;
+
+    margin-top: -1em;
+    opacity: 0;
+
+    transition: all 200ms ease;
+
+    visibility: hidden;
+    pointer-events: none;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+#password-section.visible {
+    height: unset;
+    margin-top: unset;
+    opacity: 1;
+
+    visibility: visible;
+    pointer-events: all;
+}

@@ -1,0 +1,53 @@
+name: Client CI
+
+on:
+    push:
+        paths-ignore:
+            - 'server/**'
+            - '.github/workflows/*.server.yml'
+            - '**/*.md'
+    pull_request:
+        paths-ignore:
+            - 'server/**'
+            - '.github/workflows/*.server.yml'
+            - '**/*.md'
+
+jobs:
+    build:
+        name: Node
+        runs-on: ubuntu-latest
+        timeout-minutes: 2
+
+        strategy:
+            matrix:
+                node-version: [20.x]
+
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 9
+
+            - name: Setup Node ${{ matrix.node-version }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'pnpm'
+
+            - name: Install Dependencies
+              run: pnpm install
+
+            - name: Typecheck
+              run: pnpm typecheck
+
+            - name: Lint
+              run: pnpm lint
+
+            - name: Upload Build Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: client build (node ${{ matrix.node-version }})
+                  path: client/dist

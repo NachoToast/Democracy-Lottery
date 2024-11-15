@@ -1,0 +1,18 @@
+#autologin {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+
+    color: var(--theme-grey);
+
+    padding: 0.5em;
+}
+
+#autologin label {
+    cursor: pointer;
+    user-select: none;
+}
+
+#autologin input {
+    background-color: transparent;
+}

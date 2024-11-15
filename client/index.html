@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Democracy Lottery</title>
+    </head>
+    <body>
+        <script defer type="module" src="/src/main.ts"></script>
+
+        <section id="login-view" hidden>
+            <h1>Democracy Lottery</h1>
+            <form id="login-form">
+                <div id="username-section">
+                    <label for="username-input">My username is</label>
+                    <input
+                        id="username-input"
+                        name="username-input"
+                        autocapitalize="off"
+                        autocomplete="off"
+                        autofocus
+                        placeholder="John Helldiver"
+                        required
+                        type="text"
+                        autocorrect="off"
+                    />
+                </div>
+                <div id="password-section">
+                    <label for="password-input">o7</label>
+                    <input
+                        id="password-input"
+                        name="admin-password"
+                        placeholder="Admin Password"
+                        type="password"
+                        autocorrect="off"
+                    />
+                </div>
+                <button id="submit-login-button" disabled>Join</button>
+            </form>
+        </section>
+
+        <section id="user-view" hidden>
+            <h1>Democracy Lottery</h1>
+            <p>
+                Welcome to the lottery,
+                <span id="welcome-display">unnamed helldiver</span>!
+            </p>
+            <p>
+                There are <span id="user-count-display">9</span> other divers in
+                the lottery, your chance of winning is
+                <span id="user-chance-display">0%</span>
+            </p>
+            <p>Please wait democratically for winners to be announced.</p>
+            <div id="primary-emote-row" class="emote-row">
+                <button class="skull"></button>
+                <button class="sunglasses"></button>
+                <button class="sob"></button>
+                <button class="flushed"></button>
+                <button class="nerd"></button>
+                <span class="cooldown-background"></span>
+                <span class="cooldown-foreground"></span>
+            </div>
+        </section>
+
+        <section id="admin-view" hidden>
+            <h1>Democracy Lottery</h1>
+
+            <div id="user-section">
+                <h2 id="user-count">In The Draw (1)</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Weight</th>
+                            <th>Chance</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-table"></tbody>
+                </table>
+            </div>
+
+            <button title="Weights will be accounted for" id="copy-button">
+                Copy Names to Clipboard
+            </button>
+        </section>
+
+        <div id="autologin">
+            <label for="autologin-checkbox"
+                ><input
+                    type="checkbox"
+                    id="autologin-checkbox"
+                />Auto-login</label
+            >
+        </div>
+
+        <div id="modal"></div>
+    </body>
+</html>
