@@ -14,6 +14,9 @@ defaults:
     run:
         working-directory: client
 
+permissions:
+    id-token: write
+
 jobs:
     deploy:
         name: Deploy to GitHub Pages
