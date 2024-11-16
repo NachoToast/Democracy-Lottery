@@ -16,7 +16,7 @@ socket.on(ServerEvents.User.Accepted, (user) => {
 });
 
 socket.on(ServerEvents.User.Info, (userCount, myWeight, totalWeight) => {
-    countElement.textContent = userCount.toLocaleString();
+    countElement.textContent = (userCount - 1).toLocaleString();
 
     chanceElement.textContent = decideDisplayPercentage(
         (myWeight / totalWeight) * 100,
