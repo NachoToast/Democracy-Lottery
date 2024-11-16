@@ -3,14 +3,14 @@ import { ClientEvents, ServerEvents } from './types/shared';
 
 function chooseEndpoint(): string {
     if (location.hostname === 'localhost') {
-        return 'localhost:5000';
+        return 'http://localhost:5000';
     }
 
-    return 'dl.nachotoast.com';
+    return 'https://dl.nachotoast.com';
 }
 
 export const socket: Socket<ServerEvents.All, ClientEvents.All> = io(
-    `ws://${chooseEndpoint()}`,
+    chooseEndpoint(),
     { autoConnect: false },
 );
 
